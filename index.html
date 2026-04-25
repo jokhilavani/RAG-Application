@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate AI Studio</title>
+  <link rel="stylesheet" href="/styles.css?v=6">
+</head>
+<body>
+  <main class="studio">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">CA</div>
+        <div>
+          <h1>Candidate AI</h1>
+          <p>Software version of the candidate</p>
+        </div>
+      </div>
+
+      <button id="newChat" class="primary-action" type="button">New chat</button>
+
+      <section class="card">
+        <div class="section-title">
+          <span>AI engine</span>
+          <small id="aiBadge">Checking</small>
+        </div>
+        <label for="mode">Mode</label>
+        <select id="mode">
+          <option value="grounded">AI model + resume memory</option>
+          <option value="local">Offline local analysis</option>
+        </select>
+
+        <label for="model">Model</label>
+        <select id="model">
+          <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+          <option value="gpt-4.1">gpt-4.1</option>
+          <option value="gpt-4o-mini">gpt-4o-mini</option>
+        </select>
+
+        <label for="apiKey">OpenAI API key</label>
+        <input id="apiKey" type="password" autocomplete="off" placeholder="Optional, for ChatGPT-like answers">
+        <p class="hint">Stored only in this browser for localhost use.</p>
+      </section>
+
+      <section class="card">
+        <div class="section-title">
+          <span>Resume memory</span>
+          <small id="status">Loading</small>
+        </div>
+        <div class="upload-row">
+          <input id="resumeFile" class="file-input" type="file" accept=".txt,.md,.csv,.json,.html,.htm,.docx,.pdf,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+          <button id="uploadResume" type="button">Upload</button>
+        </div>
+        <p id="fileHint" class="hint">Upload a resume, then ask candidate questions.</p>
+        <textarea id="resumeText" spellcheck="false" placeholder="Paste resume text here..."></textarea>
+        <button id="saveResume" class="secondary-action" type="button">Save memory</button>
+      </section>
+    </aside>
+
+    <section class="chat-area">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Candidate intelligence workspace</p>
+          <h2>Ask anything about the candidate</h2>
+        </div>
+        <div class="top-actions">
+          <select id="tone">
+            <option value="professional">Professional</option>
+            <option value="interview">Interview-ready</option>
+            <option value="short">Concise</option>
+          </select>
+        </div>
+      </header>
+
+      <div id="messages" class="messages">
+        <section class="welcome">
+          <div class="spark">AI</div>
+          <h3>Candidate AI Studio</h3>
+          <p>Upload the resume once. Ask direct facts or deeper candidate questions. Direct questions get direct answers; judgment questions get AI-style analysis.</p>
+          <div class="prompt-grid">
+            <button data-question="Is this candidate suitable for a Java developer role? Give a balanced answer.">Role fit</button>
+            <button data-question="What are this candidate's strongest qualities?">Strengths</button>
+            <button data-question="Give an interview-ready self introduction for this candidate.">Introduction</button>
+            <button data-question="What should this candidate improve to become more employable?">Improvements</button>
+          </div>
+        </section>
+      </div>
+
+      <form id="askForm" class="composer">
+        <textarea id="question" rows="1" autocomplete="off" placeholder="Message Candidate AI..." required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/app.js?v=6"></script>
+</body>
+</html>
